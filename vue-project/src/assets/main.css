@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html,body,#app{
+    height:100%;
+    width:100%;
+}
+
+
+/*
+滚动条 
+ */
+ ::-webkit-scrollbar {
+	width: 10px;
+	height: 12px;
+	/* background-color: #fff; */
+}
+
+::-webkit-scrollbar-thumb {
+	display: block;
+	min-height: 12px;
+	min-width: 5px;
+	border-radius: 6px;
+	background-color: rgb(217, 217, 217);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	display: block;
+	min-height: 12px;
+	min-width: 5px;
+	border-radius: 6px;
+	background-color: rgb(159, 159, 159);
+}
+
+
+/*
+AntD
+*/
+//弹窗
+.ant-modal-header{
+    display: none;
+}
+.ant-modal-footer{
+	display: none;
+}
+.ant-modal-content{
+	background-color: rgb(255,255,255,100%);
+	border-radius: 6px;
+}
+.ant-modal-body{
+	padding: 24px 32px 24px 32px;
+}
+
+

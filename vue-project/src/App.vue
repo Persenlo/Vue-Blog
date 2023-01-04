@@ -1,0 +1,95 @@
+<template>
+
+  <div class=" h-full w-full bg-fixed">
+    <div class=" h-full w-full relative ">
+      
+      <img 
+        style="user-select: none; -webkit-user-drag: none; background-color: black;"
+        class=" absolute w-full h-full top-0 left-0 object-cover brightness-50"
+        :src="store.nowBG" />
+        
+
+      <Navs 
+            v-if="route.path != '/' &&
+                  route.path != '/login' && 
+                  route.path != '/register' &&
+                  route.path != '/login/forget'" 
+                  />
+
+
+      <router-view v-slot="{ Component }" class=" transition-all absolute inset-x-0 inset-y-0">
+          <transition name="MainFade" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
+      
+    </div>
+  </div>
+
+
+  <!-- 设置 -->
+  <a-drawer
+    v-model:visible="store.showSetting"
+    class=""
+    style=""
+    title="设置"
+    placement="right"
+    @after-visible-change="afterVisibleChange"
+  >
+    <SettingView></SettingView>
+  </a-drawer>
+  
+  
+
+</template>
+
+<script setup>
+import { ref,watch } from 'vue';
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+import Navs from './layout/Navs.vue';
+import { useBlogStore } from './stores/store.js';
+import SettingView from './views/setting/SettingView.vue';
+import { liveQuery } from "dexie";
+import { db } from "./utils/db.js";
+import { useObservable } from "@vueuse/rxjs";
+
+
+
+
+const route = useRoute();
+
+const store = useBlogStore();
+
+
+let dbImg = useObservable(liveQuery(()=> db.bgpic.where("key").equalsIgnoreCase('bg').toArray()));
+
+
+
+//监听数据库，获取本地图片，无本地图片时使用网络图片
+watch(dbImg,async()=>{
+    if(dbImg.value!=''){
+      store.nowBG = dbImg.value[0].pic;
+    }else{
+      store.nowBG = store.networkBG;
+    }
+})
+
+
+
+</script>
+
+
+
+<style scoped>
+.MainFade-enter-from, .MainFade-leave-to {
+  opacity: 0;
+}
+.MainFade-enter-to, .MainFade-leave-from {
+  opacity: 1;
+}
+.MainFade-enter-active,
+.MainFade-leave-active {
+  transition: opacity 0.2s;
+}
+
+</style>
