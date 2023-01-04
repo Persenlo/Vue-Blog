@@ -4,9 +4,11 @@
     <div class=" h-full w-full relative ">
       
       <img 
-        :style="['user-select: none; -webkit-user-drag: none; background-color: black; filter:brightness('+store.bgBrightness/100+')']"
+        :style="['user-select: none; -webkit-user-drag: none; background-color: #868e96; filter:brightness('+store.bgBrightness/100+')']"
         class=" transition-all absolute w-full h-full top-0 left-0 object-cover"
         :src="store.nowBG" />
+
+      
         
 
       <Navs 
