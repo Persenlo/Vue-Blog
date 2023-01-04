@@ -17,10 +17,10 @@
                         <img :src="store.nowBG" class=" absolute inset-0 object-cover" style="height: 128px; width: 256px;" />
                         <p @click="callInput" class="inset-0 absolute text-center duration-300 text-alpha hover:bg-white hover:brightness-75 hover:opacity-75 hover:text-black leading-10" style="height: 128px; width: 256px; line-height: 128px;">更改背景</p>
                     </div>
-                    <!-- 遮罩浓度 -->
+                    <!-- 图片亮度 -->
                     <div class="" style="width: 100%;">                   
                         <a-slider v-model:value="bgBrightness" :min="0" :max="100" :step="1" :tipFormatter=null @change="changeBgBrightness" @afterChange="startChangeBgBrightness" />                   
-                        <p class=" text-center">{{"遮罩浓度："+bgBrightness+"%" }}</p>                   
+                        <p class=" text-center">{{"图片亮度："+bgBrightness+"%" }}</p>                   
                     </div>
                 </div>
             </a-collapse-panel>    
