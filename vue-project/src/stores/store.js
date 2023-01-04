@@ -17,6 +17,7 @@ export const useBlogStore = defineStore('blog', {
       //背景图片（网络）
       networkBG: "https://psl-pictures.oss-ap-southeast-1.aliyuncs.com/pictures/水族館.jpg",
       nowBG: '',
+      bgBrightness: localStorage.getItem("bgBrightness") ? JSON.parse(localStorage.getItem("bgBrightness")) : 50,
     }
   },
   

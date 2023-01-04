@@ -9,12 +9,18 @@
             </template>
             <a-collapse-panel key="1" header="背景图片" :style="customStyle">
                 <div class=" flex flex-col justify-start items-center" style="width: 100%; height: auto;">
+                    <!-- 更换背景 -->
                     <div class=" relative w-64 h-32">
                         <!-- 隐藏上传按钮，通过方法调用上传功能 -->
                         <input type="file" id="bg-upload" class=" hidden" accept="image/*" @change="getPicture($event)" />
                         <!-- 上传和背景图预览 -->
                         <img :src="store.nowBG" class=" absolute inset-0 object-cover" style="height: 128px; width: 256px;" />
                         <p @click="callInput" class="inset-0 absolute text-center duration-300 text-alpha hover:bg-white hover:brightness-75 hover:opacity-75 hover:text-black leading-10" style="height: 128px; width: 256px; line-height: 128px;">更改背景</p>
+                    </div>
+                    <!-- 遮罩浓度 -->
+                    <div class="" style="width: 100%;">                   
+                        <a-slider v-model:value="bgBrightness" :min="0" :max="100" :step="1" :tipFormatter=null @change="changeBgBrightness" @afterChange="startChangeBgBrightness" />                   
+                        <p class=" text-center">{{"遮罩浓度："+bgBrightness+"%" }}</p>                   
                     </div>
                 </div>
             </a-collapse-panel>    
@@ -55,6 +61,14 @@ const customStyle = 'background: #f7f7f7;border-radius: 4px;margin-bottom: 24px;
 let activeKey = ref(['1','2'])
 
 
+//设置参数
+let bgBrightness = ref(store.bgBrightness);
+
+
+
+
+
+
 //调用图片上传按钮
 function callInput(){
     let fileDom = document.querySelector("#bg-upload")
@@ -62,7 +76,7 @@ function callInput(){
 }
 //获取本地图片的base64格式
 let bgImgPreview = ref();
-let dbImg = ref([]);
+let dbImg = useObservable(liveQuery(()=> db.bgpic.where("key").equalsIgnoreCase('bg').toArray()));
 function getPicture(e) {
     //将图片文件转化成base64格式图片
     var reader = new FileReader();
@@ -75,15 +89,21 @@ function getPicture(e) {
 }
 //将图片保存到indexdb数据库
 async function savePicToDB(){
-    if(dbImg.value.length == ''){
+    if(dbImg.value == ''){
         await db.bgpic.add({key: "bg" , pic: bgImgPreview.value});
     }else{
-        console.log(bgImgPreview.value)
+        store.nowBG = bgImgPreview.value;
         await db.bgpic.put({key: "bg" , pic: bgImgPreview.value});
     }
-    store.nowBG = bgImgPreview.value;
+    
 }
-
+//设置遮罩浓度
+function changeBgBrightness(value){
+    store.bgBrightness = value;
+}
+function startChangeBgBrightness(value){
+    localStorage.setItem("bgBrightness",JSON.stringify(value));
+}
 
 
 

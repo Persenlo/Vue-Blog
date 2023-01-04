@@ -4,8 +4,8 @@
     <div class=" h-full w-full relative ">
       
       <img 
-        style="user-select: none; -webkit-user-drag: none; background-color: black;"
-        class=" absolute w-full h-full top-0 left-0 object-cover brightness-50"
+        :style="['user-select: none; -webkit-user-drag: none; background-color: black; filter:brightness('+store.bgBrightness/100+')']"
+        class=" transition-all absolute w-full h-full top-0 left-0 object-cover"
         :src="store.nowBG" />
         
 
@@ -32,6 +32,7 @@
     v-model:visible="store.showSetting"
     class=""
     style=""
+    width="320px"
     title="设置"
     placement="right"
     @after-visible-change="afterVisibleChange"
