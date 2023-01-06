@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import { ref,watch } from 'vue';
+import { ref,watch,onBeforeMount } from 'vue';
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import Navs from './layout/Navs.vue';
 import { useBlogStore } from './stores/store.js';
@@ -77,6 +77,10 @@ watch(dbImg,async()=>{
     }
 })
 
+onBeforeMount(()=>{
+  //检查是否为触屏设备
+  window.onload = function() { if('ontouchstart' in document.documentElement) { store.isTouchMode = true; } else { store.isTouchMode = false;; }};
+})
 
 
 </script>

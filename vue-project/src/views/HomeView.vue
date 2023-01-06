@@ -8,18 +8,18 @@
 
 
                     <!-- 公告 -->
-                    <a-tooltip placement="bottom">
+                    <a-tooltip placement="bottom" >
                         <template #title>
                             <span>公告</span>
                         </template>
-                        <MainItem noBg>
+                        <MainItem noBg @click="router.push({name: 'notify'})">
                             <BellOutlined class="icon text-white " />
                         </MainItem>
                     </a-tooltip>
 
 
                     <!-- 论坛 -->
-                    <a-tooltip placement="bottom">
+                    <a-tooltip placement="bottom" tigger="mouseenter">
                         <template #title>
                             <span>论坛（未开放）</span>
                         </template>

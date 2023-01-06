@@ -50,6 +50,7 @@ import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { notification } from 'ant-design-vue';
 import { actionlogin,getUserInfo,getImage } from '../../request/api/user'
+import { getRolebyId } from '../../request/api/role';
 import MainItem from '../../components/MainItem.vue';
 import Verify from "../../components/verifition/Verify.vue";
 import { useBlogStore } from '../../stores/store';
@@ -110,6 +111,13 @@ async function startLogin(params){
             if(iconRes.data.success == true){
                 localStorage.setItem("userIcon",JSON.stringify(iconRes.data.data));
                 store.userIcon = iconRes.data.data;
+            }
+
+            //尝试获取用户权限等级
+            let permissionRes = await getRolebyId(userInfo.userRole);
+            if(permissionRes.data.success == true){
+                localStorage.setItem("userPermission",JSON.stringify(permissionRes.data.data[0].roleLevel));
+                store.userPermission = permissionRes.data.data[0].roleLevel;
             }
 
             store.isLogin = true;

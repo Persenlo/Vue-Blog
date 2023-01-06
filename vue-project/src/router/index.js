@@ -29,6 +29,13 @@ const router = createRouter({
       name: 'user',
       component: ()=> import('../views/user/UserCenterView.vue')
     },
+
+    //公告
+    {
+      path: '/notify',
+      name: 'notify',
+      component: ()=> import('../views/notify/NotifyMain.vue')
+    },
   ]
 })
 

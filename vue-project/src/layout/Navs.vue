@@ -124,7 +124,15 @@ const store = useBlogStore();
 
 function onUserClicked(){
     if(route.path != '/user'){
-        router.push({name: 'user'})
+        if (store.isLogin) {
+            router.push({
+                name: 'user'
+            })
+        } else {
+            router.push({
+                name: 'login'
+            })
+        }
     }
 }
 

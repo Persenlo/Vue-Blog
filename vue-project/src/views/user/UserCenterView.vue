@@ -1,7 +1,7 @@
 <template>
     <div 
         class=" 
-             md:inset-x-60 md:inset-y-32
+             md:inset-x-60 md:inset-y-6
              flex items-center justify-center
              "
                 >
@@ -287,8 +287,11 @@ async function startModifyPassword(){
         localStorage.removeItem("token");
         localStorage.removeItem("userInfo");
         localStorage.removeItem("userIcon");
+        localStorage.removeItem("userPermission");
         store.token = '';
         store.isLogin = false;
+        store.userIcon = '';
+        store.userPermission = 0;
         openNotification('success','修改成功，请重新登录');
         router.push({name: 'login'});
     }else{
@@ -301,9 +304,11 @@ async function startLogout(){
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
     localStorage.removeItem("userIcon");
+    localStorage.removeItem("userPermission");
     store.token = '';
     store.isLogin = false;
     store.userIcon = '';
+    store.userPermission = 0;
     openNotification('success','已登出');
     router.go(-1);
 }
