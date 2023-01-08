@@ -1,0 +1,17 @@
+/*
+AntD
+*/
+//弹窗
+.ant-modal-header{
+    display: none;
+}
+.ant-modal-footer{
+	display: none;
+}
+.ant-modal-content{
+	background-color: rgb(255,255,255,100%);
+	border-radius: 6px;
+}
+.ant-modal-body{
+	padding: 24px 32px 24px 32px;
+}

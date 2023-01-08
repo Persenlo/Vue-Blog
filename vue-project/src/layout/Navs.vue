@@ -45,7 +45,7 @@
                 <template #title>
                     <span>公告</span>
                 </template>
-                <MainItem>
+                <MainItem @click="onNotifyCilck()">
                     <BellOutlined class="icon text-black " />
                 </MainItem>
             </a-tooltip>
@@ -81,7 +81,7 @@
                 <template #title>
                     <span>设置</span>
                 </template>
-                <MainItem>
+                <MainItem @click="onSettingClick()">
                     <SettingOutlined class="icon text-black " />
                 </MainItem>
             </a-tooltip>
@@ -95,15 +95,43 @@
     <div class="w-full
                 bottom-0
                 absolute
-                flex align-middle justify-center
+                flex items-center justify-center
                 md:hidden
+              bg-white
                 ">
-        <SmallNav class=" 
-                    h-auto w-full 
-                    ">
-            <NavItem>111</NavItem>
+
+        <a-avatar :size="24" class="hover:brightness-75 duration-300 " @click="onUserClicked()" :src="store.userIcon">
             
-        </SmallNav>
+        </a-avatar>
+
+        <!-- 首页 -->
+        <MainItem @click="onHomeClicked()">
+            <HomeOutlined class="icon text-black " />
+        </MainItem>
+        
+        <!-- 公告 -->
+        <MainItem @click="onNotifyCilck()">
+            <BellOutlined class="icon text-black " />
+        </MainItem>
+        
+        
+        <!-- 论坛 -->
+        <MainItem>
+            <TeamOutlined class="icon text-black " />
+        </MainItem>
+        
+        
+        <!-- 打卡 -->
+        <MainItem>
+            <CalendarOutlined class="icon text-black " />
+        </MainItem>
+        
+        
+        <!-- 设置 -->
+        <MainItem @click="onSettingClick()">
+            <SettingOutlined class="icon text-black " />
+        </MainItem>
+        
     </div>
 
 </template>
@@ -138,6 +166,14 @@ function onUserClicked(){
 
 function onHomeClicked(){
     router.push({name: 'home'})
+}
+
+function onSettingClick(){
+    store.showSetting = true;
+}
+
+function onNotifyCilck(){
+    router.push({name: 'notify'})
 }
 
 

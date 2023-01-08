@@ -36,6 +36,16 @@ const router = createRouter({
       name: 'notify',
       component: ()=> import('../views/notify/NotifyMain.vue')
     },
+    {
+      path: '/notify/edit',
+      name: 'notifyEdit',
+      component: ()=> import('../views/notify/NotifyEdit.vue')
+    },
+    {
+      path: '/notify/view',
+      name: 'notifyView',
+      component: ()=> import('../views/notify/NotifyView.vue')
+    },
   ]
 })
 

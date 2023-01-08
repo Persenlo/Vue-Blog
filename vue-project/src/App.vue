@@ -8,15 +8,6 @@
         class=" transition-all absolute w-full h-full top-0 left-0 object-cover"
         :src="store.nowBG" />
 
-      
-        
-
-      <Navs 
-            v-if="route.path != '/' &&
-                  route.path != '/login' && 
-                  route.path != '/register' &&
-                  route.path != '/login/forget'" 
-                  />
 
 
       <router-view v-slot="{ Component }" class=" transition-all absolute inset-x-0 inset-y-0">
@@ -24,6 +15,14 @@
             <component :is="Component" />
           </transition>
         </router-view>
+
+
+        <Navs 
+            v-if="route.path != '/' &&
+                  route.path != '/login' && 
+                  route.path != '/register' &&
+                  route.path != '/login/forget'" 
+                  />
       
     </div>
   </div>

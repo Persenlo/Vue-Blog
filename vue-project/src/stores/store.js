@@ -3,6 +3,9 @@ import { defineStore } from 'pinia'
 export const useBlogStore = defineStore('blog', {
   state: () => {
     return {
+      //服务端地址
+      ServerUrl: "http://127.0.0.1:8686",
+
       // 是否登录
       isLogin: localStorage.getItem("token") ? true : false,
       //Token

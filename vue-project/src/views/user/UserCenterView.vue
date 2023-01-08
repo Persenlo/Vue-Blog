@@ -1,11 +1,11 @@
 <template>
     <div 
         class=" 
-             md:inset-x-60 md:inset-y-6
+             md:inset-x-40 md:inset-y-6
              flex items-center justify-center
              "
                 >
-        <div style="width: 100%; max-width: 800px; height: 100%;" 
+        <div style="width: 100%; max-width: 1200px; height: 100%;" 
             class=" transition-all flex flex-col lg:flex-row items-cente justify-start gap-x-10 gap-y-10 py-12 md:py-0">
             <div class="flex flex-col items-center px-5 gap-y-10">
                 

@@ -19,7 +19,7 @@ html,body,#app{
  ::-webkit-scrollbar {
 	width: 10px;
 	height: 12px;
-	/* background-color: #fff; */
+	
 }
 
 ::-webkit-scrollbar-thumb {
@@ -37,24 +37,10 @@ html,body,#app{
 	border-radius: 6px;
 	background-color: rgb(159, 159, 159);
 }
+::-webkit-scrollbar-corner{
+	background-color: rgb(255,255,255,0%);
+}
 
 
-/*
-AntD
-*/
-//弹窗
-.ant-modal-header{
-    display: none;
-}
-.ant-modal-footer{
-	display: none;
-}
-.ant-modal-content{
-	background-color: rgb(255,255,255,100%);
-	border-radius: 6px;
-}
-.ant-modal-body{
-	padding: 24px 32px 24px 32px;
-}
 
 

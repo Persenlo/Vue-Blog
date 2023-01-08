@@ -14,6 +14,7 @@ module.exports = {
       'white-bg-second':'#FFFFFF80',
       'white-hover-second':'#FFFFFF60',
       'white-bg': 'rgb(255,255,255,70%)',
+      'white-bg-big': 'rgb(255,255,255,90%)',
 
       'alpha': '#FFFFFF00',
       'blue': '#1890ff',

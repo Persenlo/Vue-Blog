@@ -1,6 +1,6 @@
 <template>
 
-    <div class=" md:inset-x-40 md:inset-y-6">
+    <div class=" md:inset-x-40 md:inset-y-6 flex items-center justify-center">
         <div ref="mainView" @scroll="handleScroll" class=" bg-white-bg md:rounded-xl select-none overflow-scroll flex flex-col" style="width: 100%; height: 100%; max-width: 1250px;">
             
             <!-- 顶部栏 -->
@@ -11,12 +11,23 @@
                 </MainItem>
                 <p class=" font-bold text-2xl">公告</p>
                 <div class=" flex-grow"></div>
-                <div v-if="store.userPermission >= 6" class=" rounded-lg bg-white-bg-second duration-300 hover:bg-white-hover py-2 px-3 font-bold">发布公告</div>
+                <div v-if="store.userPermission >= 6" 
+                    class=" rounded-lg bg-white-bg-second duration-300 hover:bg-white-hover py-2 px-3 font-bold"
+                    @click="router.push({name: 'notifyEdit'})">
+                    发布公告
+                </div>
             </div>
 
             <!-- 公告列表 -->
             <div class=" px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style="width: 100%;">
-                <NotifyItem  v-for="item in datas" :title="item.notifyTitle" :content="item.notifyContent" :date="formateDataWithT(item.updateTime)" :isTop="item.notifyTop" :id="item.notifyId"/>
+                <NotifyItem  v-for="item in datas" 
+                    class=" "
+                    :title="item.notifyTitle" 
+                    :content="item.notifyContent" 
+                    :date="formateDataWithT(item.updateTime)" 
+                    :isTop="item.notifyTop" 
+                    :id="item.notifyId"
+                    @click="router.push({name: 'notifyView', query:{id: item.notifyId}})"/>
                 
             </div>
             <div class="flex-grow"></div>
@@ -72,11 +83,10 @@ async function startGetNotify(){
 }
 
 //去除日期中的T
-function formateDataWithT() {
+function formateDataWithT(date) {
     //时间格式中含有T
-    let date = '2022-12-15T16:14:24',
-    dateTimeres = date.replace(/T/g, ' ').replace(/.[\d]{3}Z/, ' ')
-    return dateTimeres;
+    date = date.replace(/T/g, ' ').replace(/.[\d]{3}Z/, ' ')
+    return date;
 }
 //是否滚动到底部
 function handleScroll(e){

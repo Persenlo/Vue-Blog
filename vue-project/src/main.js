@@ -9,6 +9,7 @@ import 'ant-design-vue/dist/antd.css';
 
 
 import './assets/main.css'
+import './assets/customAntd.css'
 
 const app = createApp(App)
 
