@@ -1,7 +1,7 @@
 <template>
 
     <div class=" md:inset-x-40 md:inset-y-6 flex items-center justify-center">
-        <div ref="mainView" @scroll="handleScroll" class=" bg-white-bg md:rounded-xl select-none overflow-scroll flex flex-col" style="width: 100%; height: 100%; max-width: 1250px;">
+        <div ref="mainView" @scroll="handleScroll" class=" transition-all bg-white-bg md:rounded-xl select-none overflow-scroll flex flex-col backdrop-blur-md" style="width: 100%; height: 100%; max-width: 1250px;">
             
             <!-- 顶部栏 -->
             <div class=" flex justify-center items-center py-8 px-10">
@@ -72,6 +72,9 @@ async function startGetNotify(){
         if(res.data.data.total <= count*index.value){
                 isMore.value = false;
             }
+        if(res.data.data.total == null){
+            isMore.value = false;
+        }
         if(datas.value.length == 0){
             datas.value=res.data.data.data;
         }else{

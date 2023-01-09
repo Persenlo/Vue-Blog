@@ -2,7 +2,7 @@
 
     <div class=" md:inset-x-40 md:inset-y-6 flex items-center justify-center">
         <div 
-            class=" bg-white-bg-big md:rounded-xl select-none overflow-hidden flex flex-col"
+            class=" bg-white-bg-big md:rounded-xl select-none overflow-hidden flex flex-col  backdrop-blur-sm"
             style="width: 100%; height: 100%; max-width: 1250px;">
 
             <!-- 顶部栏 -->

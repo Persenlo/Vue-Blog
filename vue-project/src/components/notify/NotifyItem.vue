@@ -1,7 +1,7 @@
 <template>
 
-    <div class=" flex justify-center items-center duration-300 hover:pb-3" style=" height: 155px; width: 100%;"  >
-        <div class=" rounded-lg  bg-white duration-300 hover:bg-white-bg p-3 " style=" height: 150px; width: 100%; ">
+    <div class=" flex justify-center items-center duration-300 hover:pb-3 " style=" height: 155px; width: 100%;"  >
+        <div class=" rounded-lg  bg-white duration-300 hover:bg-white-bg p-3 hover:shadow-lg" style=" height: 150px; width: 100%; ">
         <div class="  inset-5 flex flex-col gap-y-2">
             <div class="flex justify-center items-center gap-x-3">
                 <p class="pt-1 px-2 font-bold text-lg whitespace-nowrap overflow-ellipsis overflow-hidden flex-grow" >{{props.title}}</p>

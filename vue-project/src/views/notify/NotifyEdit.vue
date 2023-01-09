@@ -2,7 +2,7 @@
 
     <div class=" md:inset-x-40 md:inset-y-6 flex items-center justify-center">
         <div 
-            class=" bg-white-bg md:rounded-xl select-none overflow-hidden flex flex-col"
+            class=" bg-white-bg md:rounded-xl select-none overflow-hidden flex flex-col backdrop-blur-md"
             style="width: 100%; height: 100%; max-width: 1250px;">
 
             <!-- 顶部栏 -->
@@ -33,11 +33,11 @@
             </div>
 
             <div class=" rounded-lg overflow-hidden" style="min-height: 100%;" >
-                <Toolbar style="" :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" class=" bg-white" />
+                <Toolbar style="" :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" class=" bg-white " />
                 <div class=" bg-white" style="width: 100%; height: 50px;">
                     <a-input v-model:value="notifyData.notifyTitle" placeholder="请输入标题" class=" px-3 text-xl font-bold border-none focus:border-none bg-alpha" style="width: 100%; height: 50px;"/>
                 </div>
-                <Editor style=" overflow-y: hidden;" v-model="valueHtml" :defaultConfig="editorConfig" :mode="mode" class=" bg-white"
+                <Editor style=" overflow-y: hidden;" v-model="notifyData.notifyHtml" :defaultConfig="editorConfig" :mode="mode" class=" bg-white"
                     @onCreated="handleCreated" >
                 </Editor>
             </div>
@@ -188,7 +188,7 @@ async function startDeleteNotify(){
 }
 //发布或更新公告
 async function startPostNotify(){
-    if(editMode){
+    if(editMode.value){
         //更新公告
         notifyData.value.notifyContent = editorRef.value.getText();
         notifyData.value.notifyHtml = editorRef.value.getHtml();
