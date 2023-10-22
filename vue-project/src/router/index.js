@@ -46,6 +46,21 @@ const router = createRouter({
       name: 'notifyView',
       component: ()=> import('../views/notify/NotifyView.vue')
     },
+    {
+      path: '/blog',
+      name: 'blog',
+      component: ()=> import('../views/blog/BlogMain.vue')
+    },
+    {
+      path: '/blog/edit',
+      name: 'blogEdit',
+      component: ()=> import('../views/blog/BlogEditor.vue')
+    },
+    {
+      path: '/blog/view',
+      name: 'blogView',
+      component: ()=> import('../views/blog/BlogView.vue')
+    },
   ]
 })
 

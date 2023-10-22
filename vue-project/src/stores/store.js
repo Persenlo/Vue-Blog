@@ -20,7 +20,7 @@ export const useBlogStore = defineStore('blog', {
       //设置界面
       showSetting: false,
       //背景图片（网络）
-      networkBG: "https://psl-pictures.oss-ap-southeast-1.aliyuncs.com/pictures/水族館.jpg",
+      networkBG: "https://psl-pictures.oss-ap-southeast-1.aliyuncs.com/pictures/82028519_p0.png",
       nowBG: '',
       bgBrightness: localStorage.getItem("bgBrightness") ? JSON.parse(localStorage.getItem("bgBrightness")) : 50,
 
@@ -28,6 +28,8 @@ export const useBlogStore = defineStore('blog', {
       //基本参数
       //是否为触屏设备
       isTouchMode : 'false', 
+      //是否全屏
+      isFullScreen : false,
     }
   },
   

@@ -87,6 +87,7 @@ let notifyData = ref({
     notifyTitle: '',
     notifyHtml: '',
     notifyContent: '',
+    notifyImg: 0,
 })
 
 // 编辑器实例，必须用 shallowRef

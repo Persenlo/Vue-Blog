@@ -1,52 +1,38 @@
 <template>
-
   <div class=" h-full w-full bg-fixed">
     <div class=" h-full w-full relative ">
-      
-      <img 
-        :style="['user-select: none; -webkit-user-drag: none; background-color: #868e96; filter:brightness('+store.bgBrightness/100+')']"
-        class=" transition-all absolute w-full h-full top-0 left-0 object-cover"
-        :src="store.nowBG" />
+
+      <img
+        :style="['user-select: none; -webkit-user-drag: none; background-color: #868e96; filter:brightness(' + store.bgBrightness / 100 + ')']"
+        class=" transition-all absolute w-full h-full top-0 left-0 object-cover" :src="store.nowBG" />
 
 
 
       <router-view v-slot="{ Component }" class=" transition-all absolute inset-x-0 inset-y-0">
-          <transition name="MainFade" mode="out-in">
-            <component :is="Component" />
-          </transition>
-        </router-view>
+        <transition name="MainFade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
 
 
-        <Navs 
-            v-if="route.path != '/' &&
-                  route.path != '/login' && 
-                  route.path != '/register' &&
-                  route.path != '/login/forget'" 
-                  />
-      
+      <Navs v-if="route.path != '/' &&
+        route.path != '/login' &&
+        route.path != '/register' &&
+        route.path != '/login/forget'" />
+
     </div>
   </div>
 
 
   <!-- 设置 -->
-  <a-drawer
-    v-model:visible="store.showSetting"
-    class=""
-    style=""
-    width="320px"
-    title="设置"
-    placement="right"
-    @after-visible-change="afterVisibleChange"
-  >
+  <a-drawer v-model:visible="store.showSetting" class="" style="" width="320px" title="设置" placement="right"
+    @after-visible-change="afterVisibleChange">
     <SettingView></SettingView>
   </a-drawer>
-  
-  
-
 </template>
 
 <script setup>
-import { ref,watch,onBeforeMount } from 'vue';
+import { ref, watch, onBeforeMount, onMounted } from 'vue';
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import Navs from './layout/Navs.vue';
 import { useBlogStore } from './stores/store.js';
@@ -63,23 +49,38 @@ const route = useRoute();
 const store = useBlogStore();
 
 
-let dbImg = useObservable(liveQuery(()=> db.bgpic.where("key").equalsIgnoreCase('bg').toArray()));
+let dbImg = useObservable(liveQuery(() => db.bgpic.where("key").equalsIgnoreCase('bg').toArray()));
 
-
+function isFullScreen() {
+  return (document.fullscreenElement !== undefined && document.fullscreenElement !== null) ||
+     (document.mozFullScreen !== undefined && document.mozFullScreen) ||
+     (document.webkitIsFullScreen !== undefined && document.webkitIsFullScreen) ||
+     (document.msFullscreenElement !== undefined && document.msFullscreenElement !== null);
+}
 
 //监听数据库，获取本地图片，无本地图片时使用网络图片
-watch(dbImg,async()=>{
-    if(dbImg.value!=''){
-      store.nowBG = dbImg.value[0].pic;
-    }else{
-      store.nowBG = store.networkBG;
-    }
+watch(dbImg, async () => {
+  if (dbImg.value != '') {
+    store.nowBG = dbImg.value[0].pic;
+  } else {
+    store.nowBG = store.networkBG;
+  }
 })
 
-onBeforeMount(()=>{
+onBeforeMount(() => {
   //检查是否为触屏设备
-  window.onload = function() { if('ontouchstart' in document.documentElement) { store.isTouchMode = true; } else { store.isTouchMode = false;; }};
+  window.onload = function () { if ('ontouchstart' in document.documentElement) { store.isTouchMode = true; } else { store.isTouchMode = false;; } };
 })
+
+onMounted(()=>{
+  //监听全屏状态,检查是否为触屏设备
+  window.onresize = () => {
+    store.isFullScreen = isFullScreen()
+  }
+})
+
+
+
 
 
 </script>
@@ -87,15 +88,18 @@ onBeforeMount(()=>{
 
 
 <style scoped>
-.MainFade-enter-from, .MainFade-leave-to {
+.MainFade-enter-from,
+.MainFade-leave-to {
   opacity: 0;
 }
-.MainFade-enter-to, .MainFade-leave-from {
+
+.MainFade-enter-to,
+.MainFade-leave-from {
   opacity: 1;
 }
+
 .MainFade-enter-active,
 .MainFade-leave-active {
   transition: opacity 0.2s;
 }
-
 </style>

@@ -17,7 +17,7 @@ html,body,#app{
 滚动条 
  */
  ::-webkit-scrollbar {
-	width: 10px;
+	width: 6px;
 	height: 12px;
 	
 }
@@ -39,6 +39,31 @@ html,body,#app{
 }
 ::-webkit-scrollbar-corner{
 	background-color: rgb(255,255,255,0%);
+}
+
+/*修复编辑器样式问题*/
+.w-e-text-container [data-slate-editor] h1,
+.w-e-text-container [data-slate-editor] h2,
+.w-e-text-container [data-slate-editor] h3,
+.w-e-text-container [data-slate-editor] h4,
+.w-e-text-container [data-slate-editor] h5 {
+margin: 20px 0;
+font-weight: bold;
+}
+.w-e-text-container [data-slate-editor] h1 {
+font-size: 26px;
+}
+.w-e-text-container [data-slate-editor] h2 {
+font-size: 22px;
+}
+.w-e-text-container [data-slate-editor] h3 {
+font-size: 20px;
+}
+.w-e-text-container [data-slate-editor] h4 {
+font-size: 18px;
+}
+.w-e-text-container [data-slate-editor] h5 {
+font-size: 16px;
 }
 
 

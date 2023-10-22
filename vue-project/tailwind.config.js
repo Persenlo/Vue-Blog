@@ -16,6 +16,8 @@ module.exports = {
       'white-bg': 'rgb(255,255,255,70%)',
       'white-bg-big': 'rgb(255,255,255,90%)',
 
+      'black-border': '#80808050',
+
       'alpha': '#FFFFFF00',
       'blue': '#1890ff',
       'white': '#FFFFFF',

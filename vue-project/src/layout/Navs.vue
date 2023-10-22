@@ -51,12 +51,12 @@
             </a-tooltip>
             
             
-            <!-- 论坛 -->
+            <!-- 博客 -->
             <a-tooltip placement="right">
                 <template #title>
-                    <span>论坛（未开放）</span>
+                    <span>博客</span>
                 </template>
-                <MainItem>
+                <MainItem @click="onBlogClick()">
                     <TeamOutlined class="icon text-black " />
                 </MainItem>
             </a-tooltip>
@@ -65,10 +65,10 @@
             
             
             
-            <!-- 打卡 -->
+            <!-- 项目 -->
             <a-tooltip placement="right">
                 <template #title>
-                    <span>打卡</span>
+                    <span>项目(未开放)</span>
                 </template>
                 <MainItem>
                     <CalendarOutlined class="icon text-black " />
@@ -98,11 +98,14 @@
                 flex items-center justify-center
                 md:hidden
               bg-white
+                px-3
                 ">
 
-        <a-avatar :size="24" class="hover:brightness-75 duration-300 " @click="onUserClicked()" :src="store.userIcon">
+        <a-avatar :size="24" class="hover:brightness-75 duration-300" @click="onUserClicked()" :src="store.userIcon">
             
         </a-avatar>
+
+        <div class="flex-grow"></div>
 
         <!-- 首页 -->
         <MainItem @click="onHomeClicked()">
@@ -116,12 +119,12 @@
         
         
         <!-- 论坛 -->
-        <MainItem>
+        <MainItem @click="onBlogClick()">
             <TeamOutlined class="icon text-black " />
         </MainItem>
         
         
-        <!-- 打卡 -->
+        <!-- 项目 -->
         <MainItem>
             <CalendarOutlined class="icon text-black " />
         </MainItem>
@@ -174,6 +177,10 @@ function onSettingClick(){
 
 function onNotifyCilck(){
     router.push({name: 'notify'})
+}
+
+function onBlogClick(){
+    router.push({name: 'blog'})
 }
 
 

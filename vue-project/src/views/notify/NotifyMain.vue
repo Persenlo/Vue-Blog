@@ -1,7 +1,7 @@
 <template>
 
-    <div class=" md:inset-x-40 md:inset-y-6 flex items-center justify-center">
-        <div ref="mainView" @scroll="handleScroll" class=" transition-all bg-white-bg md:rounded-xl select-none overflow-scroll flex flex-col backdrop-blur-md" style="width: 100%; height: 100%; max-width: 1250px;">
+    <div class=" md:right-24 md:left-40 md:inset-y-6 flex items-center justify-center">
+        <div ref="mainView" @scroll="handleScroll" class=" transition-all bg-white-bg md:rounded-xl select-none overflow-scroll flex flex-col backdrop-blur-md" style="width: 100%; height: 100%; max-width: 1550px;">
             
             <!-- 顶部栏 -->
             <div class=" flex justify-center items-center py-8 px-10">

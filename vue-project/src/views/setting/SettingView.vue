@@ -41,6 +41,20 @@
             </a-collapse-panel>    
         </a-collapse>
 
+        <!-- 友情链接 -->
+        <a-collapse v-model:activeKey="activeKey"  :bordered="false" expandIconPosition="right">
+            <template #expandIcon="{ isActive }">
+                <CaretDownOutlined :rotate="isActive ? 180 : 0" />
+            </template>
+            <a-collapse-panel key="3" header="友情链接" :style="customStyle">
+                <div class="flex flex-col gap-y-1 px-3">
+                    <a href="https://www.wanandroid.com/">玩Android - 学习交流网站</a>
+                    <a href="https://learn.fifth-apparel.com/">ITAEM - 梦开始的地方</a>
+                </div>
+                
+            </a-collapse-panel>    
+        </a-collapse>
+
     </div>
 
 </template>
@@ -58,7 +72,7 @@ const store = useBlogStore();
 //折叠面板样式
 const customStyle = 'background: #f7f7f7;border-radius: 4px;margin-bottom: 24px;border: 0;overflow: hidden';
 
-let activeKey = ref(['1','2'])
+let activeKey = ref(['1','2','3'])
 
 
 //设置参数
